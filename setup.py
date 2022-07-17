@@ -17,7 +17,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/scikit-learn-contrib/category_encoders',
-    download_url='https://github.com/scikit-learn-contrib/category_encoders/tarball/' + __version__,
+    download_url='https://github.com/yongxie-uber/category_encoders.git/' + __version__,
     license='BSD',
     classifiers=[
       'Development Status :: 3 - Alpha',
@@ -25,7 +25,7 @@ setup(
       'Programming Language :: Python :: 3',
     ],
     keywords='python data science machine learning pandas sklearn',
-    packages=find_packages(include=['category_encoders']),
+    packages=find_packages(include=['customized_category_encoders']),
     include_package_data=True,
     author='Will McGinnis',
     install_requires=[
