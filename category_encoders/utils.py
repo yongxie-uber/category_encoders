@@ -9,6 +9,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.exceptions import NotFittedError
 from typing import Dict, List, Optional, Union
 from scipy.sparse import csr_matrix
+import inspect
 
 __author__ = 'willmcginnis'
 
@@ -263,6 +264,17 @@ class BaseEncoder(BaseEstimator):
         self.feature_names = None
         self._dim = None
 
+    def _get_tags(self):
+        collected_tags = {}
+        for base_class in reversed(inspect.getmro(self.__class__)):
+            if hasattr(base_class, "_more_tags"):
+                # need the if because mixins might not have _more_tags
+                # but might do redundant work in estimators
+                # (i.e. calling more tags on BaseEstimator multiple times)
+                more_tags = base_class._more_tags(self)
+                collected_tags.update(more_tags)
+        return collected_tags
+        
     def fit(self, X, y=None, **kwargs):
         """Fits the encoder according to X and y.
         
