@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='category_encoders',
+    name='customized_category_encoders',
     version=__version__,
     description='A collection sklearn transformers to encode categorical variables as numeric',
     long_description=long_description,
